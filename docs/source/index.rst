@@ -46,6 +46,8 @@ functionality to add this back into the liveobs_selenium library.
    :maxdepth: 2
    :caption: Contents:
 
+   page_object_models
+
 
 
 Indices and tables
