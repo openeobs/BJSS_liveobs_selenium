@@ -6,3 +6,4 @@ Page Object Models
    :caption: Contents:
 
    page_object_models/login_page
+   page_object_models/list_page
