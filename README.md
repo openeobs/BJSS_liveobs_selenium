@@ -1,4 +1,6 @@
 # LiveObs Selenium
+[![Build Status](https://travis-ci.org/bjss/BJSS_liveobs_selenium.svg?branch=master)](https://travis-ci.org/bjss/BJSS_liveobs_selenium) [![Documentation Status](https://readthedocs.org/projects/liveobs-selenium/badge/?version=latest)](http://liveobs-selenium.readthedocs.io/en/latest/?badge=latest)
+
 This library contains element selectors and page object models for use in testing
 the GUI of LiveObs.
 
