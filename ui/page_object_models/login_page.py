@@ -8,7 +8,7 @@ import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from ui.page_object_models.mobile_common import BaseMobilePage
 from ui.selectors.login_page_selectors import USERNAME_FIELD, PASSWORD_FIELD, \
-    SUBMIT_BUTTON, DATABASE_DROPDOWN
+    SUBMIT_BUTTON, DATABASE_DROPDOWN, LOGIN_ERROR_ALERT
 
 
 class LoginPage(BaseMobilePage):
@@ -50,3 +50,16 @@ class LoginPage(BaseMobilePage):
         :return: if current page is the login page
         """
         return '/mobile/login' in self.driver.current_url
+
+    def get_login_error_message(self):
+        """
+        Get error message shown after an unsuccessful login
+
+        :return: Error message if present
+        :rtype: str or None
+        """
+        try:
+            error_message = self.driver.find_element(*LOGIN_ERROR_ALERT)
+            return error_message.text
+        except NoSuchElementException:
+            return None
