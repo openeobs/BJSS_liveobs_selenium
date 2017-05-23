@@ -1,4 +1,4 @@
-""" 
+"""
 Selectors for List Component
 The list component is used in the mobile to show the list of tasks and the list
 of patients

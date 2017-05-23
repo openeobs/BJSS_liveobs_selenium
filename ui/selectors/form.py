@@ -33,7 +33,7 @@ FORM_SELECT_FIELD_CHECKBOX_LIST = \
     (By.CSS_SELECTOR, '#obsForm .obsSelectField .checklist')
 FORM_SELECT_FIELD_CHECKBOX_LIST_ITEM_INPUT = \
     (By.CSS_SELECTOR, '#obsForm .obsSelectField .checklist li input')
-FORM_SELECT_FIELD_CHECKBOX_LIST_ITEM_LABEL  = \
+FORM_SELECT_FIELD_CHECKBOX_LIST_ITEM_LABEL = \
     (By.CSS_SELECTOR, '#obsForm .obsSelectField .checklist li label')
 FORM_FIELD_BODY = (By.CSS_SELECTOR, '#obsForm .obsField .input-body')
 FORM_SELECT_FIELD_BODY = \

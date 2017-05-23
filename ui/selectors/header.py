@@ -1,4 +1,4 @@
-""" 
+"""
 Selectors for Header component
 The header component is used in the mobile to show to floating menu at the
 top of the page

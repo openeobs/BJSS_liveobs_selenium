@@ -1,7 +1,7 @@
 """
 Selectors for modal component
 The modal component is used in the mobile to show information to the user
-while they are on another screen. It consists of a cover which greys out the 
+while they are on another screen. It consists of a cover which greys out the
 current screen and the dialog which lays ontop of the cover.
 """
 
