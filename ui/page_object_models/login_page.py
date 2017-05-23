@@ -19,10 +19,10 @@ class LoginPage(BaseMobilePage):
     def login(self, username, password, database='nhclinical'):
         """
         Fill out the login form and press the submit button
-        
+
         :param username: Username to login with
         :param password: Password for the username supplied
-        :param database: Name of the database to log into if the 
+        :param database: Name of the database to log into if the
             database selection element is visible
         """
         username_e = self.driver.find_element(*USERNAME_FIELD)
@@ -46,7 +46,7 @@ class LoginPage(BaseMobilePage):
     def is_login_page(self):
         """
         Verify that we are indeed on the login page
-        
+
         :return: if current page is the login page
         """
         return '/mobile/login' in self.driver.current_url
