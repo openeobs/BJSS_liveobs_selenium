@@ -3,8 +3,10 @@ Page Object Model for List Page
 The List Page is a base class for the task and patient lists as they use the
 same template to render content
 """
+import selenium.webdriver.support.expected_conditions as ec
+import selenium.webdriver.support.ui as ui
 from ui.page_object_models.mobile_common import BaseMobilePage
-from ui.selectors.list import LIST_ITEM
+from ui.selectors.list import LIST_ITEM, LIST_CONTAINER
 
 
 class ListPage(BaseMobilePage):
@@ -34,3 +36,18 @@ class ListPage(BaseMobilePage):
         if list_item:
             return list_item[0]
         return None
+
+    def open_item(self, list_item):
+        """
+        Open (click on) the supplied list item and ensure that the page has
+        been successfully loaded
+
+        :param list_item: List Item to click on
+        :return: True if successfully opened item, False if not
+        """
+        list_item_url = list_item.get_attribute('href')
+        list_item.click()
+        ui.WebDriverWait(self.driver, self.default_wait).until(
+            ec.invisibility_of_element_located(LIST_CONTAINER)
+        )
+        return list_item_url in self.driver.current_url
