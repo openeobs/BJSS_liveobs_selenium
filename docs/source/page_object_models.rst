@@ -8,3 +8,4 @@ Page Object Models
    page_object_models/login_page
    page_object_models/list_page
    page_object_models/patient_page
+   page_object_models/data_entry_page
