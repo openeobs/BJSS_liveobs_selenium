@@ -87,11 +87,11 @@ class DataEntryPage(BaseMobilePage):
     def fill_out_form(self, data):
         """
         Using the provided list fill out the form
-        
+
         Expected Data Format:
-        
+
         .. code-block:: python
-        
+
             {
                 'name': 'respiration_rate',
                 'value': '18',
