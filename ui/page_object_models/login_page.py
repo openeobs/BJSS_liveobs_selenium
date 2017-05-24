@@ -4,8 +4,6 @@ The login page handles logging into the application
 """
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.select import Select
-import selenium.webdriver.support.expected_conditions as ec
-import selenium.webdriver.support.ui as ui
 from ui.page_object_models.mobile_common import BaseMobilePage
 from ui.selectors.login_page_selectors import USERNAME_FIELD, PASSWORD_FIELD, \
     SUBMIT_BUTTON, DATABASE_DROPDOWN, LOGIN_ERROR_ALERT
@@ -38,10 +36,7 @@ class LoginPage(BaseMobilePage):
 
         username_e.send_keys(username)
         password_e.send_keys(password)
-        login_button.click()
-        ui.WebDriverWait(self.driver, self.default_wait).until(
-            ec.visibility_of_element_located(USERNAME_FIELD)
-        )
+        self.click_and_verify_change(login_button, USERNAME_FIELD, hidden=True)
 
     def is_login_page(self):
         """

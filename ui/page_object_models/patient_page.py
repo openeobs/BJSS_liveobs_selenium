@@ -3,8 +3,6 @@ Page Object Model for Patient Page
 The Patient Page shows the observation data for the patient as well as allows
 them to conduct an ad-hoc observation
 """
-import selenium.webdriver.support.expected_conditions as ec
-import selenium.webdriver.support.ui as ui
 from ui.page_object_models.mobile_common import BaseMobilePage
 from ui.selectors.patient_page_selectors import ADHOC_OBS_MENU_BUTTON, \
     OPEN_OBS_MENU, OPEN_OBS_MENU_LIST_ITEMS, OPEN_OBS_MENU_CLOSE_BUTTON
@@ -22,10 +20,7 @@ class PatientPage(BaseMobilePage):
         list
         """
         menu_button = self.driver.find_element(*ADHOC_OBS_MENU_BUTTON)
-        menu_button.click()
-        ui.WebDriverWait(self.driver, self.default_wait).until(
-            ec.visibility_of_element_located(OPEN_OBS_MENU)
-        )
+        self.click_and_verify_change(menu_button, OPEN_OBS_MENU)
 
     def get_observation_menu_items(self):
         """
@@ -60,10 +55,8 @@ class PatientPage(BaseMobilePage):
         observation = self.get_observation_in_menu(observation_name)
         if observation:
             observation_url = observation.get_attribute('href')
-            observation.click()
-            ui.WebDriverWait(self.driver, self.default_wait).until(
-                ec.invisibility_of_element_located(ADHOC_OBS_MENU_BUTTON)
-            )
+            self.click_and_verify_change(
+                observation, ADHOC_OBS_MENU_BUTTON, hidden=True)
             return observation_url in self.driver.current_url
         return False
 
@@ -72,7 +65,4 @@ class PatientPage(BaseMobilePage):
         Close the ad-hoc observation menu
         """
         close_button = self.driver.find_element(*OPEN_OBS_MENU_CLOSE_BUTTON)
-        close_button.click()
-        ui.WebDriverWait(self.driver, self.default_wait).until(
-            ec.invisibility_of_element_located(OPEN_OBS_MENU)
-        )
+        self.click_and_verify_change(close_button, OPEN_OBS_MENU, hidden=True)
