@@ -2,9 +2,6 @@
 Page Object Model for Data Entry Page
 The Data Entry Page allows the user to submit observations and escalation tasks
 """
-
-import selenium.webdriver.support.expected_conditions as ec
-import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.select import Select
 from ui.page_object_models.mobile_common import BaseMobilePage
@@ -26,10 +23,7 @@ class DataEntryPage(BaseMobilePage):
         Open the patient information popup in the floating header
         """
         patient_info_button = self.driver.find_element(*PATIENT_INFO_BUTTON)
-        patient_info_button.click()
-        ui.WebDriverWait(self.driver, self.default_wait).until(
-            ec.visibility_of_element_located(PATIENT_INFO_POPUP)
-        )
+        self.click_and_verify_change(patient_info_button, PATIENT_INFO_POPUP)
 
     def close_patient_info(self):
         """
@@ -38,10 +32,8 @@ class DataEntryPage(BaseMobilePage):
         """
         close_button = \
             self.driver.find_element(*PATIENT_INFO_POPUP_CLOSE_BUTTON)
-        close_button.click()
-        ui.WebDriverWait(self.driver, self.default_wait).until(
-            ec.invisibility_of_element_located(PATIENT_INFO_POPUP)
-        )
+        self.click_and_verify_change(
+            close_button, PATIENT_INFO_POPUP, hidden=True)
 
     def open_full_patient_info(self):
         """
@@ -49,40 +41,29 @@ class DataEntryPage(BaseMobilePage):
         """
         full_info_button = \
             self.driver.find_element(*FULL_SCREEN_PATIENT_INFO_BUTTON)
-        full_info_button.click()
-        ui.WebDriverWait(self.driver, self.default_wait).until(
-            ec.visibility_of_element_located(FULLSCREEN_MODAL)
-        )
+        self.click_and_verify_change(full_info_button, FULLSCREEN_MODAL)
 
     def close_full_patient_info(self):
         """
         Close the full screen patient information popup
         """
         full_close_button = self.driver.find_element(*FULLSCREEN_MODAL_BUTTON)
-        full_close_button.click()
-        ui.WebDriverWait(self.driver, self.default_wait).until(
-            ec.invisibility_of_element_located(FULLSCREEN_MODAL)
-        )
+        self.click_and_verify_change(
+            full_close_button, FULLSCREEN_MODAL, hidden=True)
 
     def submit_form(self):
         """
         Press the submit button on the form
         """
         form_submit_button = self.driver.find_element(FORM_SUBMIT_BUTTON)
-        form_submit_button.click()
-        ui.WebDriverWait(self.driver, self.default_wait).until(
-            ec.visibility_of_element_located(MODAL_DIALOG)
-        )
+        self.click_and_verify_change(form_submit_button, MODAL_DIALOG)
 
     def cancel_form(self):
         """
         Press the cancel button on the form (if present)
         """
-        form_submit_button = self.driver.find_element(FORM_CANCEL_BUTTON)
-        form_submit_button.click()
-        ui.WebDriverWait(self.driver, self.default_wait).until(
-            ec.visibility_of_element_located(MODAL_DIALOG)
-        )
+        form_cancel_button = self.driver.find_element(FORM_CANCEL_BUTTON)
+        self.click_and_verify_change(form_cancel_button, MODAL_DIALOG)
 
     def fill_out_form(self, data):
         """

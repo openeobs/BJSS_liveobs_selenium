@@ -23,10 +23,7 @@ class BaseMobilePage(object):
             Navigate to the task list
         """
         task_list_item = self.driver.find_element(*TASK_ITEM)
-        task_list_item.click()
-        ui.WebDriverWait(self.driver, self.default_wait).until(
-            ec.visibility_of_element_located(LIST_CONTAINER)
-        )
+        self.click_and_verify_change(task_list_item, LIST_CONTAINER)
 
     def go_to_patient_list(self):
         """
@@ -34,10 +31,7 @@ class BaseMobilePage(object):
         """
         patient_list_item = \
             self.driver.find_element(*PATIENT_ITEM)
-        patient_list_item.click()
-        ui.WebDriverWait(self.driver, self.default_wait).until(
-            ec.visibility_of_element_located(LIST_CONTAINER)
-        )
+        self.click_and_verify_change(patient_list_item, LIST_CONTAINER)
 
     def logout(self):
         """
@@ -45,3 +39,30 @@ class BaseMobilePage(object):
         """
         logout = self.driver.find_element(*LOGOUT_BUTTON)
         logout.click()
+
+    def wait_for_element(self, element_selector, hidden=False):
+        """
+        Wrapper around ui.WebDriverWait to wait for specified element to become
+        visible
+
+        :param element_selector: Element Selector tuple
+        :type element_selector: tuple
+        :param hidden: Check if element is hidden or not
+        :type hidden: bool
+        """
+        condition = ec.visibility_of_element_located(element_selector)
+        if hidden:
+            condition = ec.invisibility_of_element_located(element_selector)
+        ui.WebDriverWait(self.driver, self.default_wait).until(condition)
+
+    def click_and_verify_change(self, el_to_click, el_to_verify, hidden=False):
+        """
+        Wrapper around clicking an element and then waiting for a change in the
+        page and verifying said change by ensuring an element is visible
+
+        :param el_to_click: Element to click to induce change
+        :param el_to_verify: Element to look for to verify change
+        :param hidden: Should check for if element is now hidden or not
+        """
+        el_to_click.click()
+        self.wait_for_element(el_to_verify, hidden=hidden)
