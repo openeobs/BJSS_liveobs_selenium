@@ -25,7 +25,7 @@ Example:
 
 .. code-block:: python
 
-    from liveobs_selenium.ui.page_object_models.login_page import LoginPage
+    from liveobs_ui.page_object_models.login_page import LoginPage
 
 
     def login_into_liveobs(username, password):

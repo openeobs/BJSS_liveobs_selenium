@@ -20,5 +20,5 @@ element to become visible/invisible to verify the intended action has worked.
 
 Common Methods Inherited from mobile_common.BaseMobilePage:
 -----------------------------------------------------------
-.. autoclass:: ui.page_object_models.mobile_common.BaseMobilePage
+.. autoclass:: liveobs_ui.page_object_models.mobile_common.BaseMobilePage
    :members:

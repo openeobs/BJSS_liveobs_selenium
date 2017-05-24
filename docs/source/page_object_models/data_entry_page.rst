@@ -11,5 +11,5 @@ allow the user to complete or cancel the task they are doing.
 
 Class Methods:
 --------------
-.. autoclass:: ui.page_object_models.data_entry_page.DataEntryPage
+.. autoclass:: liveobs_ui.page_object_models.data_entry_page.DataEntryPage
    :members:

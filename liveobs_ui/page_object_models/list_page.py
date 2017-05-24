@@ -3,8 +3,8 @@ Page Object Model for List Page
 The List Page is a base class for the task and patient lists as they use the
 same template to render content
 """
-from ui.page_object_models.mobile_common import BaseMobilePage
-from ui.selectors.list import LIST_ITEM, LIST_CONTAINER
+from liveobs_ui.page_object_models.mobile_common import BaseMobilePage
+from liveobs_ui.selectors.list import LIST_ITEM, LIST_CONTAINER
 
 
 class ListPage(BaseMobilePage):

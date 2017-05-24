@@ -8,5 +8,5 @@ rapid tranquilisation status of the patient.
 
 Class Methods:
 --------------
-.. autoclass:: ui.page_object_models.patient_page.PatientPage
+.. autoclass:: liveobs_ui.page_object_models.patient_page.PatientPage
    :members:

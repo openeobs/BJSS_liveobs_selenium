@@ -5,8 +5,9 @@ This class contains common functionality for the mobile frontend such as:
 """
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
-from ui.selectors.menu_selectors import TASK_ITEM, PATIENT_ITEM, LOGOUT_BUTTON
-from ui.selectors.list import LIST_CONTAINER
+from liveobs_ui.selectors.menu_selectors import TASK_ITEM, PATIENT_ITEM, \
+    LOGOUT_BUTTON
+from liveobs_ui.selectors.list import LIST_CONTAINER
 
 
 class BaseMobilePage(object):
@@ -42,7 +43,7 @@ class BaseMobilePage(object):
 
     def wait_for_element(self, element_selector, hidden=False):
         """
-        Wrapper around ui.WebDriverWait to wait for specified element to become
+        Wrapper around WebDriverWait to wait for specified element to become
         visible
 
         :param element_selector: Element Selector tuple
