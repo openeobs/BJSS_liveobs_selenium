@@ -9,7 +9,7 @@ setup(
     url='https://github.com/BJSS/BJSS_liveobs_selenium',
     provides=['liveobs_selenium'],
     packages=['liveobs_ui'],
-    include_package_data=False,
+    include_package_data=True,
     license='GPL',
     zip_safe=True
 )
