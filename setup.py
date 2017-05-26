@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='liveobs_selenium',
@@ -7,8 +7,7 @@ setup(
     author='BJSS',
     author_email='colin.wren@bjss.com',
     url='https://github.com/BJSS/BJSS_liveobs_selenium',
-    provides=['liveobs_selenium'],
-    packages=['liveobs_ui'],
+    packages=find_packages(),
     include_package_data=True,
     license='GPL',
     zip_safe=True
