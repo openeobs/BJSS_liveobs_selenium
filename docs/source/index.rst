@@ -47,6 +47,7 @@ functionality to add this back into the liveobs_selenium library.
    :caption: Contents:
 
    page_object_models
+   utils
 
 
 
