@@ -12,11 +12,9 @@ element to become visible/invisible to verify the intended action has worked.
 .. toctree::
    :maxdepth: 2
    :caption: Page Object Models:
+   :glob:
 
-   page_object_models/login_page
-   page_object_models/list_page
-   page_object_models/patient_page
-   page_object_models/data_entry_page
+   page_object_models/*
 
 Common Methods Inherited from mobile_common.BaseMobilePage:
 -----------------------------------------------------------
