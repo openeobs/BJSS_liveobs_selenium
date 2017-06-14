@@ -5,5 +5,5 @@ cover this. Having a page object model for this also helps with code reuse.
 
 Class Methods:
 --------------
-.. autoclass:: liveobs_ui.page_object_models.modal_page.ModalPage
+.. autoclass:: liveobs_ui.page_object_models.mobile.modal_page.ModalPage
    :members:

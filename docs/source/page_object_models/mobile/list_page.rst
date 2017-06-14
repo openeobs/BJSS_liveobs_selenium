@@ -8,5 +8,5 @@ in the list items.
 
 Class Methods:
 --------------
-.. autoclass:: liveobs_ui.page_object_models.list_page.ListPage
+.. autoclass:: liveobs_ui.page_object_models.mobile.list_page.ListPage
    :members:

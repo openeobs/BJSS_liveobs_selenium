@@ -14,9 +14,11 @@ element to become visible/invisible to verify the intended action has worked.
    :caption: Page Object Models:
    :glob:
 
-   page_object_models/*
+   page_object_models/mobile/common
+   page_object_models/desktop/common
 
-Common Methods Inherited from mobile_common.BaseMobilePage:
------------------------------------------------------------
-.. autoclass:: liveobs_ui.page_object_models.mobile_common.BaseMobilePage
+Common Methods:
+---------------
+
+.. autoclass:: liveobs_ui.page_object_models.common.base_liveobs_page.BaseLiveObsPage
    :members:
