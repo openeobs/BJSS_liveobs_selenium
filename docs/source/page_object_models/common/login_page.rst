@@ -11,5 +11,5 @@ that allows for the selection of the database to log into.
 
 Class Methods:
 --------------
-.. autoclass:: liveobs_ui.page_object_models.mobile.login_page.LoginPage
+.. autoclass:: liveobs_ui.page_object_models.common.login_page.LoginPage
    :members:

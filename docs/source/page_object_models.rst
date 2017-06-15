@@ -14,6 +14,7 @@ element to become visible/invisible to verify the intended action has worked.
    :caption: Page Object Models:
    :glob:
 
+   page_object_models/common/login_page
    page_object_models/mobile/common
    page_object_models/desktop/common
 
