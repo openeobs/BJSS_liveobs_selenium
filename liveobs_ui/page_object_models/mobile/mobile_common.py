@@ -3,11 +3,13 @@ Common Functionality for Mobile
 This class contains common functionality for the mobile frontend such as:
 - navigating to a particular URL
 """
-from liveobs_ui.selectors.menu_selectors import TASK_ITEM, PATIENT_ITEM, \
-    LOGOUT_BUTTON
-from liveobs_ui.selectors.list import LIST_CONTAINER
+from liveobs_ui.selectors.mobile.list import LIST_CONTAINER
 from liveobs_ui.page_object_models.common.base_liveobs_page import \
     BaseLiveObsPage
+from liveobs_ui.selectors.mobile.menu_selectors import TASK_ITEM, \
+    PATIENT_ITEM, LOGOUT_BUTTON
+from liveobs_ui.selectors.mobile.get_selector_by_something import \
+    get_element_selector
 
 
 class BaseMobilePage(BaseLiveObsPage):
@@ -55,3 +57,13 @@ class BaseMobilePage(BaseLiveObsPage):
         """
         logout = self.driver.find_element(*LOGOUT_BUTTON)
         logout.click()
+
+    def find_button_to_select(self, button_name):
+        """
+        Find a button in the page by name
+
+        :return: the button element on the page
+        """
+        button_selector = get_element_selector(button_name)
+        button_element = self.driver.find_element(*button_selector)
+        return button_element

@@ -2,14 +2,18 @@
 Page Object Model for Data Entry Page
 The Data Entry Page allows the user to submit observations and escalation tasks
 """
+from liveobs_ui.selectors.mobile.data_entry_selectors import \
+    PATIENT_INFO_POPUP, FULL_SCREEN_PATIENT_INFO_BUTTON, \
+    PATIENT_INFO_POPUP_CLOSE_BUTTON
+from liveobs_ui.selectors.mobile.modal import \
+    FULLSCREEN_MODAL, FULLSCREEN_MODAL_BUTTON, MODAL_DIALOG
+from liveobs_ui.selectors.mobile.get_selector_by_something import \
+    get_element_selector
+
 from liveobs_ui.page_object_models.mobile.mobile_common import BaseMobilePage
 from liveobs_ui.page_object_models.mobile.modal_page import ModalPage
-from liveobs_ui.selectors.data_entry_selectors import PATIENT_INFO_POPUP, \
-    FULL_SCREEN_PATIENT_INFO_BUTTON, PATIENT_INFO_POPUP_CLOSE_BUTTON
-from liveobs_ui.selectors.form import PATIENT_INFO_BUTTON, \
+from liveobs_ui.selectors.mobile.form import PATIENT_INFO_BUTTON, \
     FORM_CANCEL_BUTTON, FORM_SUBMIT_BUTTON, FORM
-from liveobs_ui.selectors.modal import \
-    FULLSCREEN_MODAL, FULLSCREEN_MODAL_BUTTON, MODAL_DIALOG
 
 
 class DataEntryPage(BaseMobilePage):
@@ -109,3 +113,58 @@ class DataEntryPage(BaseMobilePage):
         cancel_modal = modals[0]
         modal_page.select_reason_in_modal(cancel_modal, cancel_reason)
         modal_page.click_modal_option(cancel_modal, 'Submit')
+
+    @staticmethod
+    def locate_attribute_path(field_input):
+        """
+        Identify the class of the input field and return the specific locator
+        for their attributes
+
+        :param field_input: the general locator for the field
+        :return: locator for the attribute in the DOM
+        """
+        attribute = field_input.get_attribute("class")
+        if attribute == "block obsField":
+            return field_input.find_element_by_xpath(
+                "div[@class='input-header']/input")
+        elif attribute == "block obsSelectField":
+            return field_input.find_element_by_xpath(
+                "div[@class='input-body']/select")
+        else:
+            raise ValueError(" {} element doesn't belong to specified classes"
+                             .format(field_input))
+
+    def verify_obs_form_displayed(self, obs_type):
+        """
+        Finds the data-type attribute for the currently open observation form
+        and compares the result to the expected data-type as per the obs_type
+        selected
+
+        :param obs_type: the observation selected
+        """
+        obs_form = self.driver.find_element_by_id('obsForm')
+        self.element_is_displayed(obs_form)
+        return self.get_data_model_from_form() == \
+            get_element_selector(obs_type)
+
+    def verify_obs_field_displayed(self, obs_field):
+        """
+        Locates a specific field in an observation form and verifies its
+        visibility
+
+        :param obs_field: the observation field to look for
+        """
+        field_selector = get_element_selector(obs_field)
+        obs_fields = self.driver.find_element(*field_selector)
+        return self.element_is_displayed(obs_fields)
+
+    def verify_obs_field_not_displayed(self, obs_field):
+        """
+        Locate a specific field in an observation form and verifies it is not
+        visible
+
+        :param obs_field: the observation field to look for
+        """
+        field_selector = get_element_selector(obs_field)
+        obs_fields = self.driver.find_element(*field_selector)
+        return not self.element_is_not_displayed(obs_fields)

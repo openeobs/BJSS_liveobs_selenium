@@ -1,12 +1,17 @@
 """ Common interaction functions """
 import time
+import logging
 import selenium.webdriver.support.expected_conditions as ec
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.select import Select
+from selenium.common.exceptions import ElementNotVisibleException
 from liveobs_ui.selectors.desktop.form_selectors import \
     FORM_VIEW_AUTOCOMPLETE_CONTAINER
+
+
+_LOGGER = logging.getLogger(__name__)
 
 
 class BaseLiveObsPage(object):
@@ -151,3 +156,30 @@ class BaseLiveObsPage(object):
                 )
             )
         )
+
+    @staticmethod
+    def element_is_displayed(element_object):
+        """
+        Verify that an element is visible on the page
+
+        :param element_object: the object or element to verify
+        :return: either True/False for the element being displayed
+        """
+        try:
+            return element_object.is_displayed()
+        except ElementNotVisibleException as error:
+            _LOGGER.info(error)
+            return False
+
+    @staticmethod
+    def element_is_not_displayed(element_object):
+        """
+        Verify that an element is not visible on the page
+
+        :param element_object: the object or element to verify
+        :return: either True/False for the element not being displayed
+        """
+        try:
+            return element_object.is_not_displayed()
+        except Exception as error:  # pylint: disable=broad-except
+            _LOGGER.info(error)
