@@ -9,6 +9,8 @@ from selenium.webdriver.support.select import Select
 from selenium.common.exceptions import ElementNotVisibleException
 from liveobs_ui.selectors.desktop.form_selectors import \
     FORM_VIEW_AUTOCOMPLETE_CONTAINER
+from liveobs_ui.selectors.mobile.get_selector_by_lookup \
+    import get_element_selector
 
 
 _LOGGER = logging.getLogger(__name__)
@@ -140,6 +142,7 @@ class BaseLiveObsPage(object):
 
     def enter_many2one_tag_value(self, element, value):
         """
+
         Add value to many2one tag input then verify that the tag has been added
 
         :param element: many2one tag input element
@@ -172,14 +175,20 @@ class BaseLiveObsPage(object):
             return False
 
     @staticmethod
-    def element_is_not_displayed(element_object):
+    def get_state_of_el(element, attribute, state):
         """
-        Verify that an element is not visible on the page
+        Return if attribute on element is a particular state
+        :param element: Webelement
+        :param attribute: attribute to find
+        :param state: expected value
+        :return: bool
+        """
+        return element.get_attribute(attribute) == state
 
-        :param element_object: the object or element to verify
-        :return: either True/False for the element not being displayed
+    def get_element_by_lookup(self, element_name):
         """
-        try:
-            return element_object.is_not_displayed()
-        except Exception as error:  # pylint: disable=broad-except
-            _LOGGER.info(error)
+        Get an element by the lookup
+        :param element_name: look up term to match
+        :return: webelement
+        """
+        return self.driver.find_element(*get_element_selector(element_name))

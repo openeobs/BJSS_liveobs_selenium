@@ -7,7 +7,7 @@ from liveobs_ui.selectors.mobile.data_entry_selectors import \
     PATIENT_INFO_POPUP_CLOSE_BUTTON
 from liveobs_ui.selectors.mobile.modal import \
     FULLSCREEN_MODAL, FULLSCREEN_MODAL_BUTTON, MODAL_DIALOG
-from liveobs_ui.selectors.mobile.get_selector_by_something import \
+from liveobs_ui.selectors.mobile.get_selector_by_lookup import \
     get_element_selector
 
 from liveobs_ui.page_object_models.mobile.mobile_common import BaseMobilePage
@@ -124,10 +124,10 @@ class DataEntryPage(BaseMobilePage):
         :return: locator for the attribute in the DOM
         """
         attribute = field_input.get_attribute("class")
-        if attribute == "block obsField":
+        if 'obsField' in attribute:
             return field_input.find_element_by_xpath(
                 "div[@class='input-header']/input")
-        elif attribute == "block obsSelectField":
+        elif 'obsSelectField' in attribute:
             return field_input.find_element_by_xpath(
                 "div[@class='input-body']/select")
         else:
@@ -167,4 +167,4 @@ class DataEntryPage(BaseMobilePage):
         """
         field_selector = get_element_selector(obs_field)
         obs_fields = self.driver.find_element(*field_selector)
-        return not self.element_is_not_displayed(obs_fields)
+        return not self.element_is_displayed(obs_fields)
