@@ -1,5 +1,5 @@
 # LiveObs Selenium
-[![Build Status](https://travis-ci.org/bjss/BJSS_liveobs_selenium.svg?branch=master)](https://travis-ci.org/bjss/BJSS_liveobs_selenium) [![Documentation Status](https://readthedocs.org/projects/liveobs-selenium/badge/?version=latest)](http://liveobs-selenium.readthedocs.io/en/latest/?badge=latest)[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6e1201e1f12b41d89d8a60450434c748)](https://www.codacy.com/app/BJSS/BJSS_liveobs_selenium?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=bjss/BJSS_liveobs_selenium&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/bjss/BJSS_liveobs_selenium.svg?branch=master)](https://travis-ci.org/bjss/BJSS_liveobs_selenium) [![Documentation Status](https://readthedocs.org/projects/liveobs-selenium/badge/?version=latest)](http://liveobs-selenium.readthedocs.io/en/latest/?badge=latest) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6e1201e1f12b41d89d8a60450434c748)](https://www.codacy.com/app/BJSS/BJSS_liveobs_selenium?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=bjss/BJSS_liveobs_selenium&amp;utm_campaign=Badge_Grade)
 
 This library contains element selectors and page object models for use in testing
 the GUI of LiveObs.
