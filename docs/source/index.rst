@@ -1,20 +1,20 @@
-.. LiveObs Selenium documentation master file, created by
+.. open-eObs Selenium documentation master file, created by
    sphinx-quickstart on Tue May 23 15:44:43 2017.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to LiveObs Selenium's documentation!
+Welcome to open-eObs Selenium's documentation!
 ============================================
 
 Installation
 ------------
-To get started using the LiveObs Selenium library you first need to include it
+To get started using the open-eObs Selenium library you first need to include it
 in your project. You can do this adding the following to your
 ``requirements.txt``:
 
 .. code-block:: none
 
-    git+git://github.com/BJSS/BJSS_liveobs_selenium.git@OPTIONAL_VERSION_NUMBER
+    git+git://github.com/openeobs/BJSS_liveobs_selenium.git@OPTIONAL_VERSION_NUMBER
 
 Usage
 -----

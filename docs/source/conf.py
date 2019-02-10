@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# LiveObs Selenium documentation build configuration file, created by
+# open-eObs Selenium documentation build configuration file, created by
 # sphinx-quickstart on Tue May 23 15:44:43 2017.
 #
 # This file is execfile()d with the current directory set to its
@@ -50,7 +50,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'LiveObs Selenium'
+project = 'open-eObs Selenium'
 copyright = '2017 BJSS'
 author = 'BJSS'
 
